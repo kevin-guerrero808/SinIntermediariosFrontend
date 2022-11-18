@@ -19,6 +19,16 @@ const routes: Routes = [{
       component: DashboardComponent,
     },
     {
+      path: 'users',
+      loadChildren: () => import('./usuarios/usuarios.module')
+        .then(m => m.UsuariosModule),
+    },
+    {
+      path: 'permissions',
+      loadChildren: () => import('./permissions/permissions.module')
+        .then(m => m.PermissionsModule),
+    },
+    {
       path: 'layout',
       loadChildren: () => import('./layout/layout.module')
         .then(m => m.LayoutModule),
