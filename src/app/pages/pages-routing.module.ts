@@ -5,6 +5,8 @@ import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
+import { AuthenticationGuard } from '../guards/authentication.guard';
+import { AdminGuard } from '../guards/admin.guard';
 
 const routes: Routes = [{
   path: '',
@@ -19,12 +21,19 @@ const routes: Routes = [{
       component: DashboardComponent,
     },
     {
+      path: 'security',
+      loadChildren: () => import('./security/security.module')
+        .then(m => m.SecurityModule),
+    },
+    {
       path: 'users',
+      canActivate: [AuthenticationGuard],
       loadChildren: () => import('./usuarios/usuarios.module')
         .then(m => m.UsuariosModule),
     },
     {
       path: 'permissions',
+      canActivate: [AdminGuard],
       loadChildren: () => import('./permissions/permissions.module')
         .then(m => m.PermissionsModule),
     },

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { Role } from '../../../models/role';
 import { User } from '../../../models/user.model';
+import { RoleService } from '../../../services/role.service';
 import { UserService } from '../../../services/user.service';
 
 @Component({
@@ -17,12 +19,16 @@ export class CrearComponent implements OnInit {
   user: User = {
     name: "",
     email: "",
-    password: ""
+    password: "",
+    id_role: -1
   };
+  roles: Role[] = []
+  idSelectedRole: number = -1;
 
   constructor(private userService: UserService,
     private rutaActiva: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private roleService: RoleService) { }
 
   ngOnInit(): void {
     if (this.rutaActiva.snapshot.params.id) {
@@ -32,6 +38,7 @@ export class CrearComponent implements OnInit {
     } else {
       this.modoCreacion = true;
     }
+    this.getRoles();
   }
 
   getUser(id: number) {
@@ -85,5 +92,15 @@ export class CrearComponent implements OnInit {
     }else{
       return true;
     }
+  }
+
+  getRoles() {
+    this.roleService.index().subscribe(
+      (result) => {
+        console.log("recibe");
+        console.log(result);
+        this.roles = result;
+      }
+    )
   }
 }

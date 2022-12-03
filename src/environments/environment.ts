@@ -10,5 +10,6 @@
 
 export const environment = {
   production: false,
-  url_backend: "http://127.0.0.1:3333"
+  url_backend: "http://127.0.0.1:3333",
+  ID_ROL_ADMIN: 1
 };
