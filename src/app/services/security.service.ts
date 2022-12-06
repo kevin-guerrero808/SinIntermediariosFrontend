@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { roles } from '../enums/roles';
 import { User } from '../models/user.model';
 @Injectable({
   providedIn: 'root'
@@ -70,6 +71,17 @@ export class SecurityService {
         id_role: datosSesion.user.id_role,
         token: datosSesion.token.token,
       };
+      
+      if (datosSesion.user.role.name === roles.CONSUMER) {
+        data.profile = datosSesion.user.consumer;
+      }
+      if (datosSesion.user.role.name === roles.ADMIN) {
+        data.profile = datosSesion.user.admin;
+      }
+      if (datosSesion.user.role.name === roles.FARMER) {
+        data.profile = datosSesion.user.farmer;
+      }
+
       localStorage.setItem('sesion', JSON.stringify(data));
       this.setUser(data);
   }
@@ -78,11 +90,15 @@ export class SecurityService {
    * Permite cerrar la sesión del usuario
    * que estaba previamente logueado
    */
-  logout() {
+  logout(): Observable<User> {
     return this.http.post<User>(`${environment.url_backend}/logout`, this.elUser.value);
+  }
+
+  deleteSessionData() {
     localStorage.removeItem('sesion');
     this.setUser(new User());
   }
+
   /**
    * Permite verificar si actualmente en el local storage
    * existe información de un usuario previamente logueado 

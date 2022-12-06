@@ -43,19 +43,12 @@ export class PagesComponent {
       nameMenuItems=["E-commerce"]
     }
 
-    //console.log("nameMenuItems->"+JSON.stringify(nameMenuItems))
-    
-    //let nameMenuItems:String[]=items;
+    this.menu = [];
     MENU_ITEMS.forEach(actualNameMenuItem => {
-      ////console.log(actualNameMenuItem.idName);
-      
-      //################ URGENTE  DESCOMENTAR ESTO ###################
       if(nameMenuItems.indexOf(actualNameMenuItem.title)!=-1){
         this.menu.push(actualNameMenuItem);
         
       }
-      
-      //this.menu.push(actualNameMenuItem);
       
     });
   }

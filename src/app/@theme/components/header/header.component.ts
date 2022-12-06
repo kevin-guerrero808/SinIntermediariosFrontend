@@ -3,9 +3,13 @@ import { NbMediaBreakpointsService, NbMenuService, NbSidebarService, NbThemeServ
 
 import { UserData } from '../../../@core/data/users';
 import { LayoutService } from '../../../@core/utils';
-import { map, takeUntil } from 'rxjs/operators';
+import { filter, map, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { SecurityService } from '../../../services/security.service';
+import { User } from '../../../models/user.model';
+import { roles } from '../../../enums/roles';
+import { NbAuthService } from '@nebular/auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ngx-header',
@@ -40,7 +44,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   currentTheme = 'default';
 
-  userMenu = [ { title: 'Profile' }, { title: 'Log out' } ];
+  userMenu = [ { badge: 'profile', title: 'Profile' }, { badge: 'logout', title: 'Log out' } ];
 
   constructor(private sidebarService: NbSidebarService,
               private menuService: NbMenuService,
@@ -48,13 +52,29 @@ export class HeaderComponent implements OnInit, OnDestroy {
               private userService: UserData,
               private layoutService: LayoutService,
               private breakpointService: NbMediaBreakpointsService,
-              private securityService: SecurityService) {
+              private securityService: SecurityService,
+              private nbAuthService: NbAuthService,
+              private router: Router) {
   }
 
   ngOnInit() {
+    this.menuService.onItemClick()
+      .pipe(
+        filter((item) => item.item.badge === 'logout')
+      )
+      .subscribe(item => this.securityService.logout().subscribe((_data) => {
+        console.log("delete session")
+        this.securityService.deleteSessionData();
+        this.router.navigate(['pages/security/login']);
+      }));
+
     this.subscription = this.securityService.getUser().subscribe(
-      (result) => {
-        this.user.name = result.name;
+      (result: User) => {
+        if (result.profile) {
+          this.user.name = result.profile.first_name;
+        } else {
+          this.user.name = null;
+        }
       }
     )
     this.currentTheme = this.themeService.currentTheme;
