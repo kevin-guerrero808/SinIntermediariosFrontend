@@ -40,7 +40,7 @@ export class PagesComponent {
         nameMenuItems=['E-commerce'];
       }
     }else{
-      nameMenuItems=["home"]
+      nameMenuItems=["E-commerce"]
     }
 
     //console.log("nameMenuItems->"+JSON.stringify(nameMenuItems))

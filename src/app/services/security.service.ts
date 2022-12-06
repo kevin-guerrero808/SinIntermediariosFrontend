@@ -36,6 +36,16 @@ export class SecurityService {
   getUser() {
     return this.elUser.asObservable();
   }
+
+  /**
+   * Register as customer
+   * @param infoUser 
+   * @returns 
+   */
+  registerCustomer(infoUser: User): Observable<User> {
+    return this.http.post<User>(`${environment.url_backend}/users/customer`, infoUser);
+  }
+
   /**
    * Realiza la petición al backend con el correo y la contraseña
    * para verificar si existe o no en la plataforma
