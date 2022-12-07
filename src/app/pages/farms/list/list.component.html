@@ -1,0 +1,19 @@
+<div class="container">
+    <h1>Farms</h1>
+    <button class="btn btn-primary" (click)="create()">Create</button>
+    <table class="table">
+        <thead>
+            <tr>
+                <th *ngFor="let column of columns">{{ column }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let farm of farms">
+                <td>{{ farm.name }}</td>
+                <td>{{ farm.description }}</td>
+                <td>{{ farm.direction }}</td>
+                <td><button class="btn btn-success table_button_action" (click)="updateFarm(farm.id)">Update</button><button class="btn btn-danger" (click)="deleteFarm(farm.id)">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

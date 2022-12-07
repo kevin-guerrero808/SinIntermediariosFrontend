@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { environment } from '../../environments/environment';
+import MenuFarmer from '../configs/menu-farmer.config';
 import { roles } from '../enums/roles';
 import { SecurityService } from '../services/security.service';
 
@@ -38,6 +39,9 @@ export class PagesComponent {
     if(this.isLogged){
       if(user.role.name === roles.ADMIN){
         nameMenuItems=['Usuarios', "Permisos"];
+      }
+      if(user.role.name === roles.FARMER){
+        nameMenuItems=MenuFarmer;
       }else{
         nameMenuItems=['E-commerce'];
       }

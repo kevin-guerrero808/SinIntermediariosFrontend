@@ -32,6 +32,25 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ]
   },
   {
+    title: 'Granjas',
+    icon: 'home-outline',
+    link: '/pages/farms',
+    children: [
+      {
+        title: 'Crear',
+        link: 'farms/create',
+      },
+      {
+        title: 'Listar',
+        link: 'farms/list',
+      },
+      {
+        title: 'Actualizar',
+        link: 'farms/update',
+      }
+    ]
+  },
+  {
     title: 'Permisos',
     icon: 'home-outline',
     link: '/pages/permissions',
