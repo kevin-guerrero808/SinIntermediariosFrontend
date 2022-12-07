@@ -14,10 +14,12 @@ const routes: Routes = [{
   children: [
     {
       path: 'dashboard',
+      canActivate: [AuthenticationGuard],
       component: ECommerceComponent,
     },
     {
       path: 'iot-dashboard',
+      canActivate: [AuthenticationGuard],
       component: DashboardComponent,
     },
     {

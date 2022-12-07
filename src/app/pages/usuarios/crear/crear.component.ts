@@ -57,7 +57,7 @@ export class CrearComponent implements OnInit {
         subscribe(data => {
           Swal.fire(
             'Creado',
-            'El estudiante ha sido creado correctamente',
+            'Revisar el correo para completar el registro',
             'success'
           )
           this.router.navigate(["pages/user/list"]);
@@ -77,15 +77,14 @@ export class CrearComponent implements OnInit {
             'The user has been updated successfull',
             'success'
           )
-          this.router.navigate(["pages/user/list"]);
+          this.router.navigate(["pages/users/list"]);
         });
     }
   }
 
   validarDatosCompletos():boolean{
     this.intentoEnvio=true;
-    if(this.user.name=="" || 
-       this.user.email=="" || 
+    if(this.user.email=="" || 
        this.user.password==""){
 
       return false;

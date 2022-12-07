@@ -36,6 +36,7 @@ export class CompleteProfileComponent implements OnInit {
   setUser(): void {
     console.log("token");
     const user: User = {token: this.rutaActiva.snapshot.queryParams.token};
+    this.user.role = { name: this.rutaActiva.snapshot.queryParams.role };
     this.securityService.setUser(user);
   }
 

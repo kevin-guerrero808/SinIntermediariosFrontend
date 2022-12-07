@@ -70,6 +70,7 @@ export class SecurityService {
         id: datosSesion.user.id,
         id_role: datosSesion.user.id_role,
         token: datosSesion.token.token,
+        role: datosSesion.user.role
       };
       
       if (datosSesion.user.role.name === roles.CONSUMER) {

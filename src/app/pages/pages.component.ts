@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { roles } from '../enums/roles';
 import { SecurityService } from '../services/security.service';
 
 import { MENU_ITEMS } from './pages-menu';
@@ -27,19 +28,21 @@ export class PagesComponent {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
     this.subscription = this.securityService.getUser().subscribe((user) => {
-      this.updateMenuRole(user.id_role);
+      this.isLogged = this.securityService.sesionExiste();
+      this.updateMenuRole(user);
     });
   }
 
-  updateMenuRole(id) : void{
+  updateMenuRole(user) : void{
     let nameMenuItems:String[];
     if(this.isLogged){
-      if(id==environment.ID_ROL_ADMIN){
-        nameMenuItems=['E-commerce', "Permisos"];
+      if(user.role.name === roles.ADMIN){
+        nameMenuItems=['Usuarios', "Permisos"];
       }else{
         nameMenuItems=['E-commerce'];
       }
     }else{
+      console.log('update')
       nameMenuItems=["E-commerce"]
     }
 
