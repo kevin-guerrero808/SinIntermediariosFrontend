@@ -43,10 +43,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
       {
         title: 'Listar',
         link: 'farms/list',
-      },
-      {
-        title: 'Actualizar',
-        link: 'farms/update',
       }
     ]
   },

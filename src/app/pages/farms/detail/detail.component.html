@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col">
+        <h1>{{farm.name}}</h1>
+        <p *ngIf="farm.description">{{farm.description}}</p>
+        <span *ngIf="farm.direction"><strong>Direction: </strong><span>{{farm.direction}}</span></span>
+        <br>
+        <br>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <h3>Productos</h3>
+        <hr>
+        <button class="btn btn-success table_button_action" (click)="createProduct(farm.id)">Crear</button>
+        <br>
+        <br>
+        <div class="card mb-3" *ngFor="let product of products" (click)="open(farm)">
+            <div class="row g-0">
+                <!-- <div class="col-md-4">
+                    <img src="..." class="img-fluid rounded-start" alt="...">
+                </div> -->
+                <div class="col-md-12">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <div class="card-text">
+                            <dt>Quantity:</dt>
+                            <dd>{{product.quantity}}{{product.unit}}</dd>
+                            <br>
+                            <dt>Price by unit:</dt>
+                            <dd>{{product.price}}</dd>
+                            <br>
+                            <ng-container *ngIf="product.category">
+                                <dt>Category:</dt>
+                                <dd><span class="badge text-bg-light">{{product.category}}</span></dd>
+                            </ng-container>                            
+                        </div>
+                        <div class="card_actions">
+                            <button class="btn btn-success table_button_action" (click)="updateProduct(farm.id, product.id)">Update</button><button class="btn btn-danger" (click)="deleteProduct(product.id)">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,7 +1,26 @@
 <div class="container">
     <h1>Farms</h1>
     <button class="btn btn-primary" (click)="create()">Create</button>
-    <table class="table">
+    <br>
+    <br>
+    <div class="card mb-3">
+        <div class="row g-0" *ngFor="let farm of farms" (click)="open(farm)">
+          <!-- <div class="col-md-4">
+            <img src="..." class="img-fluid rounded-start" alt="...">
+          </div> -->
+          <div class="col-md-12">
+            <div class="card-body">
+              <h5 class="card-title">{{ farm.name }}</h5>
+              <p class="card-text" *ngIf="farm.description">{{ farm.description }}</p>
+              <p class="card-text">Direccion: {{ farm.direction }}</p>
+              <div class="card_actions">
+                <button class="btn btn-success table_button_action" (click)="viewFarm(farm.id)">View</button><button class="btn btn-danger" (click)="deleteFarm(farm.id)">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- <table class="table">
         <thead>
             <tr>
                 <th *ngFor="let column of columns">{{ column }}</th>
@@ -15,5 +34,5 @@
                 <td><button class="btn btn-success table_button_action" (click)="updateFarm(farm.id)">Update</button><button class="btn btn-danger" (click)="deleteFarm(farm.id)">Delete</button></td>
             </tr>
         </tbody>
-    </table>
+    </table> -->
 </div>

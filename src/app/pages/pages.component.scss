@@ -27,4 +27,14 @@
   //     width: auto;
   //   }
   // }
+  // Cards
+  .card_actions {
+    display: flex;
+    justify-content: flex-end;
+    button {
+      & + button {
+        margin-left: 15px;
+      }
+    }
+  }
 }

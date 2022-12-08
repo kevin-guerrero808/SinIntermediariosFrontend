@@ -53,8 +53,8 @@ export class SecurityService {
    * @param infoUser JSON con la información de correo y contraseña
    * @returns Respuesta HTTP la cual indica si el usuario tiene permiso de acceso
    */
-  login(infoUser: User): Observable<User> {
-    return this.http.post<User>(`${environment.url_backend}/login`, infoUser);
+  login(infoUser: User): Observable<any> {
+    return this.http.post<any>(`${environment.url_backend}/login`, infoUser);
   }
   /**
    * Guarda los datos tales como el identificador

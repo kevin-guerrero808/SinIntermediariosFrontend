@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { roles } from '../../../../enums/roles';
 import { User } from '../../../../models/user.model';
 import { SecurityService } from '../../../../services/security.service';
 
@@ -36,9 +37,15 @@ export class LoginFormComponent implements OnInit {
       password:this.contrasena
     }
     this.miServicioSeguridad.login(elUser).subscribe(
-      data=>{
-        this.router.navigate(['pages/dashboard']);
+      data =>{
         this.miServicioSeguridad.guardarDatosSesion(data);
+        if (data.user.role.name === roles.ADMIN) {
+          this.router.navigate(['pages/dashboard']);
+        } else if (data.user.role.name === roles.FARMER) {
+          this.router.navigate(['pages/farms/list']);
+        } else if (data.user.role.name === roles.CONSUMER) {
+          this.router.navigate(['pages/dashboard']);
+        }
       },
       error=>{
         Swal.fire({

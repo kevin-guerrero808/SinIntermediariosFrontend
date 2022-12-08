@@ -35,9 +35,8 @@ export class ListComponent implements OnInit {
     )
   }
 
-  updateFarm(id: number): void {
-    console.log("update " + id);
-    this.router.navigate(["/pages/farms/update/" + id])
+  viewFarm(id: number): void {
+    this.router.navigate(["/pages/farms/detail/" + id])
   }
 
   deleteFarm(id: string): void {
