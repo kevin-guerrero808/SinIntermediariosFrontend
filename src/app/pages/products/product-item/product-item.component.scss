@@ -1,0 +1,19 @@
+dt,
+dd {
+    display: inline;
+}
+.card_counter {
+    display: flex;
+    justify-content: flex-end;
+    .btn {
+        padding: 6px;
+        line-height: 0;
+        font-size: 26px;
+        & + .btn {
+            margin-left: 10px;
+        }
+    }
+    nb-icon {
+        font-size: 30px;
+    }
+}

@@ -5,6 +5,7 @@ import { Farm } from '../../../models/farm.model';
 import { Product } from '../../../models/product.model';
 import { FarmService } from '../../../services/farm.service';
 import { ProductService } from '../../../services/product.service';
+import { productTemplateModes } from '../../products/product-item/enums/product-template-modes';
 
 @Component({
   selector: 'ngx-detail',
@@ -16,6 +17,7 @@ export class DetailComponent implements OnInit {
   id_farm: number;
   farm: Farm = new Farm();
   products: Product[] = [];
+  productTemplateModes: productTemplateModes;
 
   constructor(private farmService: FarmService,
     private rutaActiva: ActivatedRoute,

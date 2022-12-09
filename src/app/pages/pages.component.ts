@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { environment } from '../../environments/environment';
+import MenuConsumer from '../configs/menu-consumer';
 import MenuFarmer from '../configs/menu-farmer.config';
 import { roles } from '../enums/roles';
 import { SecurityService } from '../services/security.service';
@@ -43,7 +44,7 @@ export class PagesComponent {
       if(user.role.name === roles.FARMER){
         nameMenuItems=MenuFarmer;
       }else{
-        nameMenuItems=['E-commerce'];
+        nameMenuItems=MenuConsumer;
       }
     }else{
       console.log('update')

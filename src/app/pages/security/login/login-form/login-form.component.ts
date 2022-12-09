@@ -40,11 +40,11 @@ export class LoginFormComponent implements OnInit {
       data =>{
         this.miServicioSeguridad.guardarDatosSesion(data);
         if (data.user.role.name === roles.ADMIN) {
-          this.router.navigate(['pages/dashboard']);
+          this.router.navigate(['pages/users/list']);
         } else if (data.user.role.name === roles.FARMER) {
           this.router.navigate(['pages/farms/list']);
         } else if (data.user.role.name === roles.CONSUMER) {
-          this.router.navigate(['pages/dashboard']);
+          this.router.navigate(['pages/products/list']);
         }
       },
       error=>{

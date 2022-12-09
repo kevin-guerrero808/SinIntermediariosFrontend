@@ -1,0 +1,10 @@
+<h1>Products</h1>
+<br>
+<br>
+<product-item 
+    [product]="product" 
+    [mode]="productTemplateModes.CONSUMER"
+    *ngFor="let product of products"
+    (plusProductEvent)="plusProduct(product)"
+    (minusProductEvent)="minusProduct(product)"
+    ></product-item>

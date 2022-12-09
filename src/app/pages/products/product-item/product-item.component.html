@@ -1,0 +1,32 @@
+<div class="card mb-3">
+    <div class="row g-0">
+        <!-- <div class="col-md-4">
+            <img src="..." class="img-fluid rounded-start" alt="...">
+        </div> -->
+        <div class="col-md-12">
+            <div class="card-body">
+                <h5 class="card-title">{{ product.name }}</h5>
+                <div class="card-text">
+                    <dt>Quantity: </dt>
+                    <dd>{{product.quantity}}{{product.unit}}</dd>
+                    <br>
+                    <dt>Price by unit: </dt>
+                    <dd>{{product.price}}</dd>
+                    <br>
+                    <ng-container *ngIf="product.category">
+                        <dt>Category: </dt>
+                        <dd><span class="badge text-bg-light">{{product.category}}</span></dd>
+                    </ng-container>                            
+                </div>
+                <div class="card_actions" *ngIf="mode === productTemplateModes.FARMER">
+                    <button class="btn btn-success table_button_action" (click)="updateProduct(farm.id, product.id)">Update</button><button class="btn btn-danger" (click)="deleteProduct(product.id)">Delete</button>
+                </div>
+                <div class="card_counter" *ngIf="mode === productTemplateModes.CONSUMER">
+                    <button class="btn btn-light" [disabled]="product.quantityOrdered === 0" (click)="minusProduct()"><nb-icon icon="minus-circle-outline"></nb-icon></button>
+                    <span>{{ product.quantityOrdered }}</span>
+                    <button class="btn btn-light" [disabled]="product.quantity === 0" (click)="plusProduct()"><nb-icon icon="plus-circle-outline"></nb-icon></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

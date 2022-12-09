@@ -40,6 +40,11 @@ const routes: Routes = [{
         .then(m => m.FarmsModule),
     },
     {
+      path: 'products',
+      loadChildren: () => import('./products/products.module')
+        .then(m => m.ProductsModule),
+    },
+    {
       path: 'permissions',
       canActivate: [AdminGuard],
       loadChildren: () => import('./permissions/permissions.module')

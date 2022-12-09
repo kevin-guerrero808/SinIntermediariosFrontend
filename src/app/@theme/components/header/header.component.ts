@@ -10,6 +10,7 @@ import { User } from '../../../models/user.model';
 import { roles } from '../../../enums/roles';
 import { NbAuthService } from '@nebular/auth';
 import { Router } from '@angular/router';
+import { OrderService } from '../../../services/order.service';
 
 @Component({
   selector: 'ngx-header',
@@ -54,7 +55,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
               private breakpointService: NbMediaBreakpointsService,
               private securityService: SecurityService,
               private nbAuthService: NbAuthService,
-              private router: Router) {
+              private router: Router,
+              private orderService: OrderService) {
   }
 
   ngOnInit() {
@@ -64,6 +66,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       )
       .subscribe(item => this.securityService.logout().subscribe((_data) => {
         console.log("delete session")
+        this.orderService.deleteSessionData();
         this.securityService.deleteSessionData();
         this.router.navigate(['pages/security/login']);
       }));

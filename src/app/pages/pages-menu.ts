@@ -47,6 +47,17 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ]
   },
   {
+    title: 'Productos',
+    icon: 'home-outline',
+    link: '/pages/products',
+    children: [
+      {
+        title: 'Lista',
+        link: 'products/list',
+      }
+    ]
+  },
+  {
     title: 'Permisos',
     icon: 'home-outline',
     link: '/pages/permissions',
