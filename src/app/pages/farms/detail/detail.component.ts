@@ -17,7 +17,7 @@ export class DetailComponent implements OnInit {
   id_farm: number;
   farm: Farm = new Farm();
   products: Product[] = [];
-  productTemplateModes: productTemplateModes;
+  productTemplateModes = productTemplateModes;
 
   constructor(private farmService: FarmService,
     private rutaActiva: ActivatedRoute,

@@ -16,6 +16,9 @@ import { NbIconModule } from '@nebular/theme';
     CommonModule,
     ProductsRoutingModule,
     NbIconModule
+  ],
+  exports: [
+    ProductItemComponent
   ]
 })
 export class ProductsModule { }

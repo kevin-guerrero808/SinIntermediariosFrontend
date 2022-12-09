@@ -16,7 +16,7 @@
         <br>
         <product-item 
             [product]="product" 
-            [mode]="productTemplateModes.FARMER" 
+            [mode]="productTemplateModes.FARMER"
             *ngFor="let product of products"
             (updateProduct)="updateProduct()"
             (deleteProduct)="deleteProduct()"></product-item>

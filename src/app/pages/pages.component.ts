@@ -41,7 +41,7 @@ export class PagesComponent {
       if(user.role.name === roles.ADMIN){
         nameMenuItems=['Usuarios', "Permisos"];
       }
-      if(user.role.name === roles.FARMER){
+      else if(user.role.name === roles.FARMER){
         nameMenuItems=MenuFarmer;
       }else{
         nameMenuItems=MenuConsumer;
