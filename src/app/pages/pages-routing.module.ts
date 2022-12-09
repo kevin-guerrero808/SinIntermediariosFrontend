@@ -7,6 +7,7 @@ import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
 import { AuthenticationGuard } from '../guards/authentication.guard';
 import { AdminGuard } from '../guards/admin.guard';
+import { ShoppingCartModule } from './shopping-cart/shopping-cart.module';
 
 const routes: Routes = [{
   path: '',
@@ -43,6 +44,11 @@ const routes: Routes = [{
       path: 'products',
       loadChildren: () => import('./products/products.module')
         .then(m => m.ProductsModule),
+    },
+    {
+      path: 'shopping-cart',
+      loadChildren: () => import('./shopping-cart/shopping-cart.module')
+        .then(m => m.ShoppingCartModule),
     },
     {
       path: 'permissions',

@@ -9,6 +9,11 @@
 
 <div class="header-container">
   <nb-actions size="small">
+    <nb-action *ngIf="user?.role === roles.CONSUMER"
+    icon="shopping-cart-outline"
+    badgePosition="top right"
+      [badgeText]="this.order?.products?.length > 0 ? this.order?.products?.length : ''"
+      badgeStatus="info" (click)="goToSummary()"></nb-action>
     <nb-action class="user-action" *nbIsGranted="['view', 'user']" >
       <nb-user [nbContextMenu]="userMenu"
                [onlyPicture]="userPictureOnly"

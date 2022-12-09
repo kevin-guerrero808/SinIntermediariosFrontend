@@ -1,0 +1,17 @@
+<nb-card>
+    <nb-card-header>Resumen</nb-card-header>
+    <nb-card-body>
+        <div class="order_product" *ngFor="let product of order.products">
+            <span class="order_product_name">{{product.name}}</span>
+            <span class="order_product_quantity">{{product.quantityOrder}}<span>&nbsp;</span>{{product.unit}}</span>
+            <span class="order_product_price">${{product.priceOrder}}</span>
+        </div>
+        <div class="order_product_total">
+            <span class="order_product_total_label">Precio total</span>
+            <span class="order_product_total_price">${{order.total_price}}</span>
+        </div>
+    </nb-card-body>
+  </nb-card>
+<div class="order_action">
+    <button class="btn btn-success">Pagar</button>
+</div>

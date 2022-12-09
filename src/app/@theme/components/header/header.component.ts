@@ -11,6 +11,7 @@ import { roles } from '../../../enums/roles';
 import { NbAuthService } from '@nebular/auth';
 import { Router } from '@angular/router';
 import { OrderService } from '../../../services/order.service';
+import { Order } from '../../../models/order';
 
 @Component({
   selector: 'ngx-header',
@@ -23,6 +24,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   userPictureOnly: boolean = false;
   user: any = {};
   subscription;
+  roles = roles;
 
   themes = [
     {
@@ -46,6 +48,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   currentTheme = 'default';
 
   userMenu = [ { badge: 'profile', title: 'Profile' }, { badge: 'logout', title: 'Log out' } ];
+
+  order: Order;
 
   constructor(private sidebarService: NbSidebarService,
               private menuService: NbMenuService,
@@ -75,6 +79,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       (result: User) => {
         if (result.profile) {
           this.user.name = result.profile.first_name;
+          this.user.role = result.role.name;
         } else {
           this.user.name = null;
         }
@@ -100,6 +105,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
         takeUntil(this.destroy$),
       )
       .subscribe(themeName => this.currentTheme = themeName);
+    this.order = this.orderService.getOrderValue()
+    this.orderService.getOrder().subscribe((order) => {
+      this.order = order;
+    })
   }
 
   ngOnDestroy() {
@@ -121,5 +130,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
   navigateHome() {
     this.menuService.navigateHome();
     return false;
+  }
+
+  goToSummary() {
+    if (this.order?.products?.length > 0) {
+      this.router.navigate(['pages/shopping-cart/detail'])
+    }
   }
 }

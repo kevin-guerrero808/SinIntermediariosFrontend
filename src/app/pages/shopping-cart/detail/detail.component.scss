@@ -1,0 +1,41 @@
+span.order_product_name {
+    font-size: 16px;
+}
+
+.order_product_name {}
+
+.order_product {
+    display: flex;
+    padding: 10px;
+    padding-right: 0;
+}
+
+span.order_product_name {
+    flex: 0 0 40%;
+}
+
+.order_product_quantity {
+    flex: 0 0 20%;
+}
+
+.order_product_price {
+    flex: 0 0 40%;
+    text-align: right;
+}
+
+.order_product_total {
+    display: flex;
+    margin-top: 30px;
+    justify-content: space-between;
+    /* width: 400px; */
+}
+
+span.order_product_total_price {
+    font-weight: 700;
+    font-size: 20px;
+}
+.order_action {
+    margin-top: 100px;
+    display: flex;
+    justify-content: flex-end;
+}

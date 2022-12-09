@@ -68,3 +68,11 @@
     }
   }
 }
+
+::ng-deep {
+  .nb-theme-default nb-badge.status-info {
+    top: -20px;
+    left: -20px;
+    right: auto;
+  }
+}
