@@ -43,12 +43,11 @@ export class PagesComponent {
       }
       else if(user.role.name === roles.FARMER){
         nameMenuItems=MenuFarmer;
-      }else{
+      }else if (user.role.name === roles.CONSUMER){
         nameMenuItems=MenuConsumer;
       }
     }else{
-      console.log('update')
-      nameMenuItems=["E-commerce"]
+      nameMenuItems=[]
     }
 
     this.menu = [];
